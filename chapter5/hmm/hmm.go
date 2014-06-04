@@ -2,12 +2,14 @@ package main
 
 import "fmt"
 
-var (i = 1000)
+var (
+	i = 1000
+)
 
 func main() {
 	if i > 10 {
-    	fmt.Println("Big")
+		fmt.Println("Big")
 	} else {
-    fmt.Println("Small")
-}
+		fmt.Println("Small")
+	}
 }
