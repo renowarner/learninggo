@@ -2,12 +2,11 @@ package main
 
 import "fmt"
 
+func zero(POINTERNAME *int) {
+    *POINTERNAME = 0
+}
 func main() {
     x := 5
     zero(&x)
-    fmt.Println(x) // x is 0
-}
-
-func zero(test *int) {
-    *test = 0
+    fmt.Println(x)
 }
