@@ -15,7 +15,7 @@ var (
 
 	mail     = "https://www.gmail.com"
 	userName = "email"
-	userPass = "password"
+	userPass = "pass"
 )
 
 func TestCreatingWebDriver(t *testing.T) {
@@ -48,8 +48,21 @@ func TestEmailLogin(t *testing.T) {
 	}
 }
 
+//Still attempting to figure out how to open the right email.
 func TestOpenMail(t *testing.T) {
-	email, err := wd.FindElement(selenium.ById, ":3j")
+	dick := "0"
+	todd, err := wd.FindElement(selenium.ByLinkText, "Test Subject")
+	if err != nil {
+		t.Error(err)
+	}
+	//	err = email.Click()
+	//	if err != nil {
+	//		t.Error(err)
+	//}
+}
+
+func TestOpenLink(t *testing.T) {
+	email, err := wd.FindElement(selenium.ByLinkText, "http://www.speedtest.net/")
 	if err != nil {
 		t.Error(err)
 	}
@@ -82,7 +95,7 @@ func findAndFillByCss(fieldID, errID, fillValue string) error {
 }
 
 func findAndClickButton(fieldID, errID string) error {
-	elem, err := wd.FindElements(selenium.ByCSSSelector, fieldID)
+	elem, err := wd.FindElement(selenium.ByCSSSelector, fieldID)
 	if err != nil {
 		return errors.New("Unable to find button: " + errID + " " + err.Error())
 	}
