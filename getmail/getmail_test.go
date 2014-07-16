@@ -7,15 +7,13 @@ import (
 	"bitbucket.org/tebeka/selenium"
 )
 
-// Using globals in this test is fine, as it has no real context and does nothing but run these
-// tests
 var (
 	wd  selenium.WebDriver
 	err error
 
 	mail     = "https://www.gmail.com"
-	userName = "email"
-	userPass = "pass"
+	userName = "lithotesting2@gmail.com"
+	userPass = "Lithosphere1"
 )
 
 func TestCreatingWebDriver(t *testing.T) {
@@ -27,8 +25,6 @@ func TestCreatingWebDriver(t *testing.T) {
 }
 
 func TestLoadingLoginPage(t *testing.T) {
-	// XXX: This crashes when given a bad domain.
-	// TODO: Report bug to author or write patch to fix.
 	err = wd.Get(mail)
 }
 
@@ -50,17 +46,17 @@ func TestEmailLogin(t *testing.T) {
 
 //Still attempting to figure out how to open the right email.
 func TestOpenMail(t *testing.T) {
-	dick := "0"
-	todd, err := wd.FindElement(selenium.ByLinkText, "Test Subject")
+	email, err := wd.FindElement(selenium.ByLinkText, "Test Subject")
 	if err != nil {
 		t.Error(err)
 	}
-	//	err = email.Click()
-	//	if err != nil {
-	//		t.Error(err)
-	//}
+	err = email.Click()
+	if err != nil {
+		t.Error(err)
+	}
 }
 
+/*
 func TestOpenLink(t *testing.T) {
 	email, err := wd.FindElement(selenium.ByLinkText, "http://www.speedtest.net/")
 	if err != nil {
@@ -71,7 +67,7 @@ func TestOpenLink(t *testing.T) {
 		t.Error(err)
 	}
 }
-
+*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
