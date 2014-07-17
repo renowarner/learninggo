@@ -3,15 +3,16 @@ package main
 import (
 	"errors"
 	"testing"
+	"time"
 
-	"bitbucket.org/tebeka/selenium"
+	"github.com/tebeka/selenium"
 )
 
 var (
 	wd  selenium.WebDriver
 	err error
 
-	mail     = "https://www.gmail.com"
+	mail     = "http://mail.google.com/mail/h/"
 	userName = "lithotesting2@gmail.com"
 	userPass = "Lithosphere1"
 )
@@ -42,11 +43,11 @@ func TestEmailLogin(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+	time.Sleep(time.Millisecond * 1000)
 }
 
-//Still attempting to figure out how to open the right email.
 func TestOpenMail(t *testing.T) {
-	email, err := wd.FindElement(selenium.ByLinkText, "Test Subject")
+	email, err := wd.FindElement(selenium.ByPartialLinkText, "Test Subject")
 	if err != nil {
 		t.Error(err)
 	}
